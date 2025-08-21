@@ -1,0 +1,15 @@
+{
+  "routes": [
+    {
+      "route": "https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Gerenciadores/LoginUser",
+      "methods": [
+        "post"
+      ],
+      "redirect": "/Veiculos",
+      "statusCode": 200,
+      "headers": {
+        "Login-gerencia": ""
+      }
+    }
+  ]
+}
