@@ -10,6 +10,17 @@
       "headers": {
         "Login-gerencia": ""
       }
+    },
+    {
+      "route": "https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Usuarios/LoginUser",
+      "methods": [
+        "post"
+      ],
+      "redirect": "/home",
+      "statusCode": 200,
+      "headers": {
+        "login-usuario": ""
+      }
     }
   ]
 }
