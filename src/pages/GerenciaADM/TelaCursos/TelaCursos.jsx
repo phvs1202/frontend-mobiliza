@@ -41,7 +41,7 @@ function TelaCursos() {
     // Buscar cursos da API
     const carregarCursos = async () => {
         try {
-            const response = await fetch('https://mobiliza-gersite-back-end.onrender.com/api/Curso/TodosCurso');
+            const response = await fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Curso/TodosCurso');
             if (response.ok) {
                 const data = await response.json();
                 setCursos(data);
@@ -58,7 +58,7 @@ function TelaCursos() {
     // Função para inativar curso
     const inativarCurso = async (id) => {
         try {
-            const response = await fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Curso/InativarCurso/${id}`, {
+            const response = await fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Curso/InativarCurso/${id}`, {
                 method: 'PUT'
             });
 
@@ -81,7 +81,7 @@ function TelaCursos() {
 
     const ativarCurso = async (id) => {
         try {
-            const response = await fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Curso/AtivarCurso/${id}`, {
+            const response = await fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Curso/AtivarCurso/${id}`, {
                 method: 'PUT'
             });
 
@@ -107,7 +107,7 @@ function TelaCursos() {
         if (!novoCurso.trim()) return;
 
         try {
-            const response = await fetch('https://mobiliza-gersite-back-end.onrender.com/api/Curso/AdicionarCurso', {
+            const response = await fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Curso/AdicionarCurso', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

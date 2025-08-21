@@ -45,7 +45,7 @@ function Relatorios() {
     async function fetchDados() {
       try {
         // Busca tipos de usuário
-        const tiposResponse = await fetch('https://mobiliza-gersite-back-end.onrender.com/api/TipoUsuario/TodosTipos');
+        const tiposResponse = await fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/TipoUsuario/TodosTipos');
         if (!tiposResponse.ok) throw new Error('Erro ao buscar tipos de usuário');
         const tipos = await tiposResponse.json();
         setTiposUsuarios(tipos);
@@ -58,11 +58,11 @@ function Relatorios() {
           resEntradas,
           resUsuarios
         ] = await Promise.all([
-          fetch('https://mobiliza-gersite-back-end.onrender.com/api/Veiculos/TodosVeiculos'),
-          fetch('https://mobiliza-gersite-back-end.onrender.com/api/TipoVeiculo/TodosTipos'),
-          fetch('https://mobiliza-gersite-back-end.onrender.com/api/TipoUsuario/TodosTipos'),
-          fetch('https://mobiliza-gersite-back-end.onrender.com/api/Entrada/TodasEntradas'),
-          fetch('https://mobiliza-gersite-back-end.onrender.com/api/Usuarios/TodosUser')
+          fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Veiculos/TodosVeiculos'),
+          fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/TipoVeiculo/TodosTipos'),
+          fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/TipoUsuario/TodosTipos'),
+          fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Entrada/TodasEntradas'),
+          fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Usuarios/TodosUser')
         ]);
 
         if (

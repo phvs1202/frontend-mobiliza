@@ -66,7 +66,7 @@ function PaginaGrafico() {
     // Funções de busca de dados
     const fetchDadosCNH = async () => {
         try {
-            const response = await fetch('https://mobiliza-gersite-back-end.onrender.com/api/Cnh/ValidadeUsuario');
+            const response = await fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Cnh/ValidadeUsuario');
             if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
 
             const data = await response.json();
@@ -109,9 +109,9 @@ function PaginaGrafico() {
 
     const buscarDadosGraficos = async (dataInicio, dataFim) => {
         const [usuariosResponse, veiculosResponse, entradasResponse] = await Promise.all([
-            fetch('https://mobiliza-gersite-back-end.onrender.com/api/Usuarios/qtdUser'),
-            fetch('https://mobiliza-gersite-back-end.onrender.com/api/Veiculos/qtdVeiculos'),
-            fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Entrada/EntradaPorTipo?${new URLSearchParams({
+            fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Usuarios/qtdUser'),
+            fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Veiculos/qtdVeiculos'),
+            fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Entrada/EntradaPorTipo?${new URLSearchParams({
                 ...(dataInicio && { dataInicio }),
                 ...(dataFim && { dataFim })
             })}`)

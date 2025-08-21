@@ -37,12 +37,12 @@ function TelaPerfil() {
         setUsuario(usuarioObj);
 
         if (usuarioObj.foto_de_perfil) {
-            const urlCompleta = `https://mobiliza-gersite-back-end.onrender.com/ImagensUsuarios/${usuarioObj.foto_de_perfil}`;
+            const urlCompleta = `https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/ImagensUsuarios/${usuarioObj.foto_de_perfil}`;
             setFotoUser(urlCompleta);
         }
 
         // Buscar veículos do usuário com status_id 1 (ativos)
-        fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Veiculos/VeiculoPorUsuario/${usuarioObj.id}`)
+        fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Veiculos/VeiculoPorUsuario/${usuarioObj.id}`)
             .then(res => res.json())
             .then(data => {
                 const ativos = data.filter(v => v.status_id === 1);
@@ -50,7 +50,7 @@ function TelaPerfil() {
             });
 
         // Buscar curso
-        fetch('https://mobiliza-gersite-back-end.onrender.com/api/Curso/TodosCurso')
+        fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Curso/TodosCurso')
             .then(res => res.json())
             .then(cursosData => {
                 const cursoUsuario = cursosData.find(curso => curso.id === usuarioObj.curso_id);
@@ -61,7 +61,7 @@ function TelaPerfil() {
 
     const buscarVeiculosAtivos = async (usuarioId) => {
         try {
-            const response = await fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Veiculos/VeiculoPorUsuario/${usuarioId}`);
+            const response = await fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Veiculos/VeiculoPorUsuario/${usuarioId}`);
             const data = await response.json();
             const ativos = data.filter(v => v.status_id === 1);
             setVeiculos(ativos);
@@ -74,7 +74,7 @@ function TelaPerfil() {
 
     const gerarQRCodeParaVeiculo = async (veiculoId) => {
         try {
-            const response = await fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Veiculos/CriacaoQRCode/${veiculoId}`, {
+            const response = await fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Veiculos/CriacaoQRCode/${veiculoId}`, {
                 method: 'POST'
             });
 
@@ -111,7 +111,7 @@ function TelaPerfil() {
         formData.append('arquivo', file); // cheque nome do parâmetro esperado
 
         try {
-            const response = await fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Usuarios/UploadFoto/${usuario.id}`, {
+            const response = await fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Usuarios/UploadFoto/${usuario.id}`, {
                 method: 'POST',
                 body: formData
             });
@@ -121,7 +121,7 @@ function TelaPerfil() {
                 const nomeFoto = result.arquivo;
 
                 if (nomeFoto) {
-                    const urlCompleta = `https://mobiliza-gersite-back-end.onrender.com/ImagensUsuarios/${nomeFoto}?t=${Date.now()}`;
+                    const urlCompleta = `https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/ImagensUsuarios/${nomeFoto}?t=${Date.now()}`;
 
                     setFotoUser(urlCompleta);
 

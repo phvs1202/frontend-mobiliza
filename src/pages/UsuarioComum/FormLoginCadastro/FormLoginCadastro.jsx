@@ -29,7 +29,7 @@ function FormLoginCadastro() {
 
     useEffect(() => {
         setCarregandoTipos(true);
-        fetch('https://mobiliza-gersite-back-end.onrender.com/api/TipoUsuario/TodosTipos')
+        fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/TipoUsuario/TodosTipos')
             .then(response => response.json())
             .then(data => {
                 setTipos(data);
@@ -47,7 +47,7 @@ function FormLoginCadastro() {
     useEffect(() => {
         if (parseInt(tipoUsuarioId) === 1) {
             setCarregandoCursos(true);
-            fetch('https://mobiliza-gersite-back-end.onrender.com/api/Curso/TodosCurso')
+            fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Curso/TodosCurso')
                 .then(response => response.json())
                 .then(data => setCursos(data))
                 .finally(() => setCarregandoCursos(false));
@@ -85,7 +85,7 @@ function FormLoginCadastro() {
 
         try {
             // Cadastra o usuário
-            let response = await fetch('https://mobiliza-gersite-back-end.onrender.com/api/Usuarios/CadastroUser', {
+            let response = await fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Usuarios/CadastroUser', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(novoUsuario)
@@ -96,7 +96,7 @@ function FormLoginCadastro() {
             await response.json();
 
             // Se cadastro OK, faz login automático
-            response = await fetch('https://mobiliza-gersite-back-end.onrender.com/api/Usuarios/LoginUser', {
+            response = await fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Usuarios/LoginUser', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, senha })
@@ -139,7 +139,7 @@ function FormLoginCadastro() {
             senha
         };
 
-        fetch('https://mobiliza-gersite-back-end.onrender.com/api/Usuarios/LoginUser', {
+        fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Usuarios/LoginUser', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(usuarioLogado)

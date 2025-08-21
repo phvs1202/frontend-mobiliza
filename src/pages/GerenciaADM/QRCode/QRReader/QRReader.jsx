@@ -193,7 +193,7 @@ function QRReader() {
         };
 
         try {
-            const response = await fetch('https://mobiliza-gersite-back-end.onrender.com/api/Entrada/AdicionarEntrada', {
+            const response = await fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Entrada/AdicionarEntrada', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(entrada)
@@ -209,7 +209,7 @@ function QRReader() {
 
     const verificarEntradaExistente = async (dados) => {
         try {
-            const response = await fetch('https://mobiliza-gersite-back-end.onrender.com/api/Entrada/TodasEntradas');
+            const response = await fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Entrada/TodasEntradas');
             if (!response.ok) throw new Error("Erro ao verificar entradas");
 
             const entradas = await response.json();
@@ -221,7 +221,7 @@ function QRReader() {
             );
 
             if (entradaAtiva) {
-                await fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Entrada/InativarEntrada/${entradaAtiva.id}`, {
+                await fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Entrada/InativarEntrada/${entradaAtiva.id}`, {
                     method: 'PUT'
                 });
 
@@ -338,7 +338,7 @@ function QRReader() {
 
                                 <div className='dados-imagens'>
                                     <img
-                                        src={`https://mobiliza-gersite-back-end.onrender.com/ImagensUsuarios/${qrResult.IdUsuario}.jpg`}
+                                        src={`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/ImagensUsuarios/${qrResult.IdUsuario}.jpg`}
                                         alt="Foto do usuário"
                                         style={{ width: '18vh', borderRadius: '100px' }}
                                         onError={(e) => {
@@ -348,7 +348,7 @@ function QRReader() {
                                     />
 
                                     <img
-                                        src={`https://mobiliza-gersite-back-end.onrender.com/ImagensVeiculos/${qrResult.idVeiculo}.jpg`}
+                                        src={`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/ImagensVeiculos/${qrResult.idVeiculo}.jpg`}
                                         alt="Foto do veículo do usuário"
                                         style={{ width: '25vh' }}
                                         onError={(e) => {

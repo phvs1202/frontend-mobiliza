@@ -21,7 +21,7 @@ function Login() {
         };
 
         try {
-            const response = await fetch('https://mobiliza-gersite-back-end.onrender.com/api/Gerenciadores/LoginUser', {
+            const response = await fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Gerenciadores/LoginUser', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(usuarioLogado)

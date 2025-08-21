@@ -51,7 +51,7 @@ function HomeUsuario() {
 
         const carregarTiposVeiculo = async () => {
             try {
-                const response = await fetch('https://mobiliza-gersite-back-end.onrender.com/api/TipoVeiculo/TodosTipos');
+                const response = await fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/TipoVeiculo/TodosTipos');
                 const data = await response.json();
                 setTiposVeiculos(data);
             } catch (error) {
@@ -67,7 +67,7 @@ function HomeUsuario() {
 
     const carregarFotoVeiculo = async (veiculoId) => {
         try {
-            const response = await fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Veiculos/RetornarFotoVeiculo/${veiculoId}`);
+            const response = await fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Veiculos/RetornarFotoVeiculo/${veiculoId}`);
 
             if (response.ok) {
                 const blob = await response.blob();
@@ -86,7 +86,7 @@ function HomeUsuario() {
 
         const carregarVeiculosUsuario = async (usuarioId) => {
             try {
-                const response = await fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Veiculos/VeiculoPorUsuario/${usuarioId}`);
+                const response = await fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Veiculos/VeiculoPorUsuario/${usuarioId}`);
                 const data = await response.json();
 
                 // Filtrar apenas os veículos com status_id === 1 (ativos)
@@ -114,7 +114,7 @@ function HomeUsuario() {
 
         const verificarCNHCadastrada = async (usuarioId) => {
             try {
-                const response = await fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Cnh/CnhUsuarioEspecifico/${usuarioId}`);
+                const response = await fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Cnh/CnhUsuarioEspecifico/${usuarioId}`);
 
                 if (response.ok) {
                     const data = await response.json();
@@ -162,7 +162,7 @@ function HomeUsuario() {
         }
 
         try {
-            const response = await fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Cnh/CadastrarCnh/${usuario?.id}`, {
+            const response = await fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Cnh/CadastrarCnh/${usuario?.id}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -215,7 +215,7 @@ function HomeUsuario() {
 
     const deletarVeiculo = async (veiculoId) => {
         try {
-            const response = await fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Veiculos/InativarVeiculos/${veiculoId}`, {
+            const response = await fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Veiculos/InativarVeiculos/${veiculoId}`, {
                 method: 'PUT'
             });
 
@@ -246,7 +246,7 @@ function HomeUsuario() {
         }));
 
         try {
-            const response = await fetch('https://mobiliza-gersite-back-end.onrender.com/api/Veiculos/CadastroVeiculo', {
+            const response = await fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Veiculos/CadastroVeiculo', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(dadosParaEnviar)
@@ -314,7 +314,7 @@ function HomeUsuario() {
         formData.append('arquivo', file); // nome esperado pelo backend
 
         try {
-            const response = await fetch(`https://mobiliza-gersite-back-end.onrender.com/api/Veiculos/UploadFoto/${veiculoId}`, {
+            const response = await fetch(`https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Veiculos/UploadFoto/${veiculoId}`, {
                 method: 'POST',
                 body: formData
             });
@@ -323,7 +323,7 @@ function HomeUsuario() {
                 const result = await response.json();
                 const nomeFoto = result.arquivo;
 
-                const url = `https://mobiliza-gersite-back-end.onrender.com/ImagensVeiculos/${nomeFoto}?t=${Date.now()}`;
+                const url = `https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/ImagensVeiculos/${nomeFoto}?t=${Date.now()}`;
                 setFotoCarro(url); // ou adicione no array se for um por veículo
 
                 window.location.reload(false);

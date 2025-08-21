@@ -44,7 +44,7 @@ function CadastroAdm() {
             senha,
         };
 
-        fetch('https://mobiliza-gersite-back-end.onrender.com/api/Gerenciadores/CadastroUser', {
+        fetch('https://api-mobiliza-evb8hpeahya8bngs.canadacentral-01.azurewebsites.net/api/Gerenciadores/CadastroUser', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(novoUsuario)
